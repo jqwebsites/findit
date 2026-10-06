@@ -57,3 +57,7 @@ input,select,textarea{font-size:16px}dl{grid-template-columns:90px 1fr}.btn{padd
 body{overflow-x:clip}main{min-width:0}.filters{grid-template-columns:minmax(0,1fr)}.filters>*{min-width:0}
 input,select,textarea{min-width:0;max-width:100%}.item{min-width:0}.item .bd{min-width:0}.item h3,.item p{overflow-wrap:anywhere}
 @media(max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.list{grid-template-columns:minmax(0,1fr)}.filters .row{flex-direction:column;align-items:stretch}.filters .seg{width:100%}.fl{grid-template-columns:minmax(0,1fr)}.ph{font-size:2.6rem}}
+.tabs b {
+  font-family: "Segoe UI Symbol", "Apple Color Emoji", symbol, sans-serif;
+  font-weight: normal;
+}
