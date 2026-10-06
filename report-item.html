@@ -1,0 +1,12 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Report · FindIt</title><link rel="stylesheet" href="style.css"></head>
+<body data-page="report"><div id="nav"></div><main>
+<h1 style="font-size:2.4rem">Report an item</h1><br>
+<div class="seg" id="type"><button class="on" data-t="lost">I Lost Something</button><button data-t="found">I Found Something</button></div>
+<div class="steps" id="dots"></div>
+<div class="card" id="wiz">
+<section class="step"><h2 id="ttl" style="margin-top:0">Describe what you lost</h2><label>Item name</label><input id="name" placeholder="e.g. Black phone with blue case"><label>Category</label><select id="cat"></select><div class="fl"><div><label>Brand / color</label><input id="brand" placeholder="e.g. Black, Samsung"></div><div><label>Serial number or unique mark</label><input id="serial" placeholder="Optional"></div></div><label>Description</label><textarea id="desc" rows="2"></textarea><div id="fq" style="display:none"><label>Verification question (only the owner should know)</label><input id="q" placeholder="e.g. What is written inside the cover?"><label>Correct answer</label><input id="a"></div></section>
+<section class="step"><h2 style="margin-top:0">Where and when?</h2><p class="mu">Tap the closest campus area.</p><br><div class="map" id="map"></div><label>Date and time</label><input type="datetime-local" id="when"></section>
+<section class="step"><h2 style="margin-top:0">Add photos</h2><div class="drop" id="drop">Drag photos here or click to browse</div><input type="file" id="file" accept="image/*" multiple hidden><div class="prev" id="prev"></div></section>
+<section class="step"><h2 style="margin-top:0">Contact info</h2><label>HCPSMSHS email</label><input type="email" id="email" placeholder="name@hcpsmshs.edu.ph"><p class="mu" style="font-size:.85rem;margin-top:8px">We send a verification link to confirm you’re a student or staff member.</p></section>
+<div class="row" style="justify-content:space-between;margin-top:24px"><button class="btn g" id="back">Back</button><button class="btn" id="next">Continue</button></div></div>
+</main><div id="foot"></div><script src="app.js"></script></body></html>

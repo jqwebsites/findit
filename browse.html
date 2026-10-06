@@ -1,0 +1,9 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Browse · FindIt</title><link rel="stylesheet" href="style.css"></head>
+<body data-page="browse"><div id="nav"></div><main>
+<h1 style="font-size:2.4rem">Browse items</h1><br><div class="filters card">
+<input id="q" type="search" placeholder="Search by keyword, e.g. blue notebook">
+<div class="seg" id="cats"></div>
+<div class="row" style="justify-content:space-between"><div class="seg" id="st"><button class="on">All</button><button>Unclaimed</button><button>Under Review</button><button>Resolved</button></div><div class="seg" id="vw"><button class="on" data-v="grid">Grid</button><button data-v="list">List</button></div></div>
+<div class="fl"><select id="loc" aria-label="Location"></select><input id="from" inputmode="numeric" maxlength="8" placeholder="From date (ddmmyy)" aria-label="From date, ddmmyy"></div></div>
+<p class="mu" id="cnt" style="margin-bottom:12px"></p><div id="res"></div>
+</main><div id="foot"></div><script src="app.js"></script></body></html>
