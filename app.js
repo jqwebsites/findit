@@ -29,8 +29,9 @@ function shell(){
  const L=[['index.html','Home'],['report-item.html','Report'],['browse.html','Browse']];
  $('#nav').outerHTML=`<nav><div class="in"><a class="logo" href="index.html"><i>⌕</i>FindIt</a>${L.map(([h,n])=>`<a class="l ${h==p?'on':''}" href="${h}">${n}</a>`).join('')}<button class="btn g sm" id="th" aria-label="Toggle theme">◐</button></div></nav>`;
  $('#foot').outerHTML=`<footer><a href="admin.html" style="color:inherit">FindIt</a> · Digital Lost and Found Management System for HCPSMSHS<br>Research prototype · data is saved in this browser</footer>`;
- document.body.insertAdjacentHTML('beforeend',`<div class="tabs">${L.map(([h,n],k)=>`<a class="${h==p?'on':''}" href="${h}"><b>${['🏠︎','＋','🔍︎'][k]}</b>${n}</a>`).join('')}</div>`);
- const sv=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=sv;
+document.body.insertAdjacentHTML('beforeend', `<div class="tabs">${
+  L.map(([h, n], k) => `<a class="${h == p ? 'on' : ''}" href="${h}"><b>${['⌂', '＋', '⌕'][k]}</b>${n}</a>`).join('')
+}</div>`); const sv=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=sv;
  $('#th').onclick=()=>{const n=document.documentElement.dataset.theme=='dark'?'light':'dark';document.documentElement.dataset.theme=n;localStorage.setItem('theme',n)};
 }
 const pages={
