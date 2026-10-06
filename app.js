@@ -125,3 +125,4 @@ adminInit(){
 }};
 pages.admin=()=>gate(pages.adminInit);
 document.addEventListener('DOMContentLoaded',()=>{shell();pages[document.body.dataset.page]?.()});
+document.head.insertAdjacentHTML('beforeend',`<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230071e3'/><circle cx='28' cy='28' r='12' fill='none' stroke='white' stroke-width='6'/><line x1='37' y1='37' x2='48' y2='48' stroke='white' stroke-width='6' stroke-linecap='round'/></svg>">`);
