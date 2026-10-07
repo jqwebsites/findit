@@ -1,5 +1,5 @@
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const EMAIL_DOMAIN='@gmail.com';
+const EMAIL_DOMAIN='@hcpsmshs.edu.ph';
 const LOCS=['Main Building 3rd Floor','Science Lab','Gymnasium','Canteen','Library','Prefect Office','Quadrangle','Parking Area'];
 const CATS=['Electronics','Identification/Cards','School Uniforms','Books','Accessories','Others'];
 const EM={Electronics:'📱','Identification/Cards':'🪪','School Uniforms':'🧥',Books:'📘',Accessories:'⌚',Others:'📦'};
@@ -29,9 +29,8 @@ function shell(){
  const L=[['index.html','Home'],['report-item.html','Report'],['browse.html','Browse']];
  $('#nav').outerHTML=`<nav><div class="in"><a class="logo" href="index.html"><i>⌕</i>FindIt</a>${L.map(([h,n])=>`<a class="l ${h==p?'on':''}" href="${h}">${n}</a>`).join('')}<button class="btn g sm" id="th" aria-label="Toggle theme">◐</button></div></nav>`;
  $('#foot').outerHTML=`<footer><a href="admin.html" style="color:inherit">FindIt</a> · Digital Lost and Found Management System for HCPSMSHS<br>Research prototype · data is saved in this browser</footer>`;
-document.body.insertAdjacentHTML('beforeend', `<div class="tabs">${
-  L.map(([h, n], k) => `<a class="${h == p ? 'on' : ''}" href="${h}"><b>${['⌂', '＋', '⌕'][k]}</b>${n}</a>`).join('')
-}</div>`); const sv=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=sv;
+ document.body.insertAdjacentHTML('beforeend',`<div class="tabs">${L.map(([h,n],k)=>`<a class="${h==p?'on':''}" href="${h}"><b><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${[`<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>`,`<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>`,`<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>`][k]}</svg></b>${n}</a>`).join('')}</div>`);
+ const sv=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=sv;
  $('#th').onclick=()=>{const n=document.documentElement.dataset.theme=='dark'?'light':'dark';document.documentElement.dataset.theme=n;localStorage.setItem('theme',n)};
 }
 const pages={
@@ -126,4 +125,51 @@ adminInit(){
 }};
 pages.admin=()=>gate(pages.adminInit);
 document.addEventListener('DOMContentLoaded',()=>{shell();pages[document.body.dataset.page]?.()});
-document.head.insertAdjacentHTML('beforeend',`<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230071e3'/><circle cx='28' cy='28' r='12' fill='none' stroke='white' stroke-width='6'/><line x1='37' y1='37' x2='48' y2='48' stroke='white' stroke-width='6' stroke-linecap='round'/></svg>">`);
+function promo(){
+ const SC=[['Introducing','Lost it?|Find it.','A new way to recover what matters at HCPSMSHS.','logo','#2997ff'],
+ ['Report','Report in seconds.','Lost or found, in four simple steps.','report','#30d158'],
+ ['Search','Search that gets it.','Keywords, categories, locations, even dates.','search','#ff9f0a'],
+ ['Smart matching','It finds the match.','Lost and found reports are compared automatically.','match','#bf5af2'],
+ ['Verification','Prove it’s yours.','Only the real owner knows the answer.','lock','#ff375f'],
+ ['Pickup','Scan. Collect.','Staff scan your QR code to confirm the claim.','qr','#5ac8fa'],
+ ['Insights','Measure what matters.','Recovery rate, return time and satisfaction.','chart','#64d2ff'],
+ ['FindIt','Found. Returned.','Built for HCPSMSHS.','logo','#2997ff']];
+ const CH=[[261.63,329.63,392,493.88],[220,261.63,329.63,392],[174.61,220,261.63,329.63],[196,246.94,293.66,329.63]],R=[65.41,55,43.65,49],P=[0,1,2,3,2,1,2,3],N=SC.length;
+ const ic='<svg viewBox="0 0 64 64" width="64" height="64"><rect width="64" height="64" rx="16" fill="#0071e3"/><circle cx="28" cy="28" r="12" fill="none" stroke="#fff" stroke-width="6"/><path d="M37 37l11 11" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg>';
+ const chk='<svg viewBox="0 0 24 24" width="20" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg>';
+ const MK={
+  logo:`<div class="mk lg">${ic}</div>`,
+  report:`<div class="mk gl" style="width:300px"><div class="pg">${[1.2,1.7,2.2,2.7].map(d=>`<i style="--d:${d}s"></i>`).join('')}</div><div class="ln" style="--d:1.2s"></div><div class="ln" style="--d:1.5s;width:70%"></div><div class="ln" style="--d:1.8s;width:85%"></div></div>`,
+  search:`<div class="mk gl" style="width:300px;text-align:left"><b class="ty">blue notebook</b><div class="rw" style="--d:2.4s"><b></b><u></u></div><div class="rw" style="--d:2.7s"><b></b><u style="flex:.7"></u></div></div>`,
+  match:`<div class="mk mt"><div class="cd" style="--x:-60px"></div><div class="rg"><svg viewBox="0 0 36 36" width="96"><circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3"/><circle class="rc" cx="18" cy="18" r="15.9" fill="none" stroke-width="3" pathLength="100"/></svg><b>92%</b></div><div class="cd" style="--x:60px"></div></div>`,
+  lock:`<div class="mk gl" style="width:300px;text-align:left"><p style="font-size:.85rem;color:#a1a1a6;margin-bottom:10px">What color is the phone case?</p><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><b class="ty" style="animation-delay:1.8s;font-size:1.3rem">blue</b><span class="okc">${chk}</span></div></div>`,
+  qr:`<div class="mk"><div class="qr">${Array.from({length:81},()=>Math.random()>.5?'<i></i>':'<s></s>').join('')}</div><div class="vf">Verified</div></div>`,
+  chart:`<div class="mk bars">${[40,55,48,70,82,95].map((h,i)=>`<i style="--h:${h}%;--d:${1+i*.12}s"></i>`).join('')}</div>`};
+ const st=$('#scn'),pb=$('#pb'),pl=$('#play'),sg=$('#stage');let ctx,w=0;
+ const show=k=>{const[e,h,s,m,c]=SC[k];sg.style.setProperty('--g',c);w=0;
+  const hl=h.split('|').map((ln,j,a)=>`<div class="${j==a.length-1?'gr':''}">${ln.split(' ').map(x=>`<span style="animation-delay:${.25+.12*w++}s">${x}</span>`).join(' ')}</div>`).join('');
+  st.innerHTML=`<div class="scn"><div class="eb">${e}</div><h3 class="hl">${hl}</h3><p class="sub">${s}</p>${MK[m]}</div>`};
+ let mast,dry,nb;
+ const init=()=>{ctx=new(window.AudioContext||window.webkitAudioContext)();const cp=ctx.createDynamicsCompressor();mast=ctx.createGain();mast.connect(cp);cp.connect(ctx.destination);
+  const rv=ctx.createConvolver(),n=ctx.sampleRate*2.6|0,bf=ctx.createBuffer(2,n,ctx.sampleRate);for(let c=0;c<2;c++){const d=bf.getChannelData(c);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*(1-i/n)**2.5}rv.buffer=bf;const rg=ctx.createGain();rg.gain.value=.4;rv.connect(rg);rg.connect(mast);
+  dry=ctx.createGain();dry.connect(mast);dry.connect(rv);nb=ctx.createBuffer(1,ctx.sampleRate,ctx.sampleRate);const d=nb.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1};
+ const osc=(type,f,t,d,v,att,dest,flt)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+att);g.gain.exponentialRampToValueAtTime(.0001,t+d);let n=o;if(flt){const b=ctx.createBiquadFilter();b.type='lowpass';b.frequency.value=flt;o.connect(b);n=b}n.connect(g);g.connect(dest);o.start(t);o.stop(t+d+.05)};
+ const pluck=(f,t,v)=>{osc('sine',f,t,1.6,v,.008,dry,2800);osc('triangle',f*2,t,.5,v*.25,.005,dry,3500)};
+ const kick=t=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(42,t+.18);g.gain.setValueAtTime(.55,t);g.gain.exponentialRampToValueAtTime(.001,t+.28);o.connect(g);g.connect(mast);o.start(t);o.stop(t+.3)};
+ const nz=(t,d,fl,fr,v,rise)=>{const s=ctx.createBufferSource();s.buffer=nb;s.loop=true;const f=ctx.createBiquadFilter();f.type=fl;f.frequency.setValueAtTime(fr,t);if(rise){f.Q.value=2;f.frequency.exponentialRampToValueAtTime(7000,t+d)}const g=ctx.createGain();g.gain.setValueAtTime(rise?.0001:v,t);g.gain.exponentialRampToValueAtTime(rise?v:.001,t+d);g.gain.linearRampToValueAtTime(0,t+d+.05);s.connect(f);f.connect(g);g.connect(rise?dry:mast);s.start(t);s.stop(t+d+.1)};
+ const S=(s,t)=>{const bar=s>>3,b=s&7,k=bar==15?0:bar%4,c=CH[k];
+  if(b==0){c.slice(0,3).forEach(f=>osc('sine',f,t,2.2,.035,.5,dry,1500));osc('sine',R[k],t,1.2,.3,.01,mast);if(bar==15)c.forEach(f=>osc('sine',f,t,3.4,.06,.15,dry,2200))}
+  if(bar<15&&(bar>1||!(b&1)))pluck(c[P[b]]*2,t,b&1?.05:.09);
+  if(bar>1&&bar<15&&b==5)osc('sine',R[k]*2,t,.4,.16,.01,mast);
+  if(bar>1&&bar<15&&(b==0||b==4))kick(t);
+  if(bar>3&&bar<15&&(b&1))nz(t,.05,'highpass',7500,.05);
+  if((bar==3||bar==13)&&b==0)nz(t,2,'bandpass',400,.12,1)};
+ pl.onclick=()=>{if(!ctx)init();ctx.resume();const T0=ctx.currentTime+.15,dur=32;let nx=0;
+  mast.gain.cancelScheduledValues(0);mast.gain.setValueAtTime(1,ctx.currentTime);mast.gain.setValueAtTime(1,T0+dur-1);mast.gain.linearRampToValueAtTime(0,T0+dur+1.2);
+  pb.style.transition='none';pb.style.width='0';pb.offsetWidth;pb.style.transition=`width ${dur}s linear`;pb.style.width='100%';pl.hidden=true;
+  const at=(t,fn)=>setTimeout(fn,Math.max(0,(t-ctx.currentTime)*1000));
+  const iv=setInterval(()=>{while(nx<128&&T0+nx*.25<ctx.currentTime+.5){const t=T0+nx*.25;S(nx,t);if(nx%16==0){const k=nx/16;at(t,()=>show(k));at(t+3.55,()=>st.firstElementChild.classList.add('out'))}nx++}
+   if(nx>=128){clearInterval(iv);at(T0+dur+.8,()=>{pl.hidden=false;pl.textContent='↻ Replay'})}},80)};
+ show(0);
+}
+document.addEventListener('DOMContentLoaded',()=>{if(document.body.dataset.page=='index')promo()});
